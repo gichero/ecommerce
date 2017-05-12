@@ -4,10 +4,47 @@ body {
   font-family: sans-serif;
 }
 
+.navbar{
+  position:fixed;
+  top: 0;
+  width: 100%;
+  background-color: lightBlue;
+  height: 5vw;
+}
 .products{
-    width: 25%;
-    float:left;
-    margin-left: 5vw;
-    height: 445px;
-    margin-bottom: 5vw;
+  float: left;
+  width: 25%;
+  margin-left: 5vw;
+  margin-bottom: 2vw;
+  background-color: yellow;
+  /*margin-left: 5vw;
+  margin-bottom: 5vw;*/
+}
+.cover{
+    width: 100%;
+    height: 30vw;
+}
+.page{
+  margin-top: 7vw;
+}
+.detailPic{
+  float: left;
+  margin-left: 15vw;
+  margin-right: 10vw;
+  height: 445px;
+}
+
+.description{
+  float: left;
+  width: 40%;
+}
+.topRight{
+  float: right;
+}
+
+.products button{
+  float: right;
+}
+.products h4{
+  float: left;
 }

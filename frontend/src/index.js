@@ -6,11 +6,14 @@ import ReduxThunk from 'redux-thunk';
 import { Router, Route, Link, IndexLink, IndexRoute, hashHistory } from 'react-router';
 import HomePageContainer from './ePages/homePage.js';
 import homePageReducer from './ePages/homePage.reducer';
-
+import ProductDetailContainer from './ePages/productDetail';
+import ProductDetailReducer from './ePages/productDetail.reducer';
 import './index.css';
 
+
 const reducer = Redux.combineReducers({
-    HomePage: homePageReducer
+    HomePage: homePageReducer,
+    ProductDetail: ProductDetailReducer
 });
 
 const store = Redux.createStore(
@@ -19,23 +22,28 @@ const store = Redux.createStore(
   Redux.applyMiddleware(ReduxThunk)
 );
 
-
-
 class AppLayout extends React.Component {
   render() {
+      let topRight = (
+          <div className = 'topRight'>
+          <input className = "userLogin" type = "text"/>
+          <input className = "passLogin" type = "text"/>
+          </div>
+      )
 
     // a link for each component
     return (
+    <div>
       <div>
-        <ul className="nav">
+        <div className="navbar">
           <h1><IndexLink to="/" activeClassName="active">Buy Comics</IndexLink></h1>
-          <input className = 'userLogin' type='text' placeholder='username'/>
-          <input className = 'password' type='text' placeholder='password'/>
-        </ul>
+          {topRight}
+        </div>
         <div className="content">
           {this.props.children}
         </div>
       </div>
+    </div>
     )
   }
 }
@@ -46,6 +54,7 @@ ReactDOM.render(
     <Router history={hashHistory}>
       <Route path="/" component={AppLayout}>
         <IndexRoute component={HomePageContainer}/>
+        <Route path="/productDetail/:id" component={ProductDetailContainer}/>
       </Route>
     </Router>
   </ReactRedux.Provider>,

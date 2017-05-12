@@ -1,8 +1,10 @@
 import React from 'react';
 import * as ReactRedux from 'react-redux';
 import * as actions from './homePage.action';
+import { Router, Route, Link, IndexLink, IndexRoute, hashHistory } from 'react-router';
 
 class HomePage extends React.Component {
+
     componentDidMount(){
         this.props.fetchImage();
     }
@@ -10,14 +12,17 @@ class HomePage extends React.Component {
   render() {
 
     return (
-        <div>
-              {this.props.allImages.map((page,idx)=>
-          <div key={idx}>
-              <h3>{page.title}</h3>
-              <img className= 'products' src={'/media/'+page.image_path}/>
+        <div className="page">
+      {this.props.allImages.map((page,idx)=>
+            <div className='products' key={idx}>
+              <img className='cover'  src={'/media/'+page.image_path}/>
+              <h3>{page.name}</h3>
+              <h4>${page.price.toFixed(2)}</h4>
+              <h4><a href={"/productDetail/"+page.id}/></h4>
+              <button><Link to={"/productDetail/"+page.id}>Buy Now!</Link></button>
+          <button><Link to={"/productDetail/"+page.id}>Check it out!</Link></button>
           </div>)}
-
-       </div>
+      </div>
     )
   }
 }
