@@ -8,12 +8,16 @@ import HomePageContainer from './ePages/homePage.js';
 import homePageReducer from './ePages/homePage.reducer';
 import ProductDetailContainer from './ePages/productDetail';
 import ProductDetailReducer from './ePages/productDetail.reducer';
+import signupContainer from './ePages/signup';
+import signupReducer from './ePages/signup.reducer';
 import './index.css';
 
 
 const reducer = Redux.combineReducers({
     HomePage: homePageReducer,
-    ProductDetail: ProductDetailReducer
+    ProductDetail: ProductDetailReducer,
+    signup: signupReducer
+
 });
 
 const store = Redux.createStore(
