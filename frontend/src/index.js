@@ -5,18 +5,18 @@ import * as ReactRedux from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import { Router, Route, Link, IndexLink, IndexRoute, hashHistory } from 'react-router';
 import HomePageContainer from './ePages/homePage.js';
-import homePageReducer from './ePages/homePage.reducer';
+import HomePageReducer from './ePages/homePage.reducer';
 import ProductDetailContainer from './ePages/productDetail';
 import ProductDetailReducer from './ePages/productDetail.reducer';
-import signupContainer from './ePages/signup';
-import signupReducer from './ePages/signup.reducer';
+import SignupContainer from './ePages/signup';
+import SignupReducer from './ePages/signup.reducer';
 import './index.css';
 
 
 const reducer = Redux.combineReducers({
-    HomePage: homePageReducer,
+    HomePage: HomePageReducer,
     ProductDetail: ProductDetailReducer,
-    signup: signupReducer
+    Signup: SignupReducer
 
 });
 
@@ -28,12 +28,23 @@ const store = Redux.createStore(
 
 class AppLayout extends React.Component {
   render() {
-      let topRight = (
-          <div className = 'topRight'>
-          <input className = "userLogin" type = "text"/>
-          <input className = "passLogin" type = "text"/>
-          </div>
-      )
+
+      let topRight;
+    console.log(this.props.userInfo);
+    if (this.props.userInfo != null){
+      topRight = (
+      <div className='topRight'>
+      <h3>{'Welcome' + this.props.userInfo.username}</h3>
+      </div>
+    );
+  }
+    //   let topRight = (
+    //       <div className = 'topRight'>
+    //       <label>Login </label><input className = "userLogin" type = "text" placeholder="userName"/>
+    //       <input className = "passLogin" type = "text" placeholder="password"/>
+    //       <button><Link to="/signup">Sign Up</Link></button>
+    //       </div>
+    //   )
 
     // a link for each component
     return (
@@ -59,6 +70,7 @@ ReactDOM.render(
       <Route path="/" component={AppLayout}>
         <IndexRoute component={HomePageContainer}/>
         <Route path="/productDetail/:id" component={ProductDetailContainer}/>
+        <Route path="/signup/" component={SignupContainer}/>
       </Route>
     </Router>
   </ReactRedux.Provider>,

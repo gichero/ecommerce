@@ -17,7 +17,7 @@ class ProductDetail extends React.Component{
     render(){
         return(
             <div className='page'>
-                <img className='detailPic' src = {'/media/'+this.props.items.image_path}/>
+                <img className='detailPic' src={'/media/'+this.props.items.image_path}/>
                 <div className='description'>
                     <h1>{this.props.items.name}</h1>
                     <p>{this.props.items.description}</p>

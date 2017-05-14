@@ -1,52 +1,51 @@
 import React from 'react';
 import * as ReactRedux from 'react-redux';
 import * as actions from './signup.actions';
+import { Router, Route, Link, IndexLink, IndexRoute, hashHistory } from 'react-router';
 
-class signup extends React.Component{
+class Signup extends React.Component{
     render(){
+        let object = {
+            userName: this.props.userName,
+            email: this.props.email,
+            firstName: this.props.firstName,
+            lastName: this.props.lastName,
+            password: this.props.password,
+            confPassword: this.props.confPassword
+        }
         return(
             <div>
-                <div>
+
                 <h2>Sign Up</h2>
-                </div>
 
-                <div>
                 <label>Username</label>
-                <input name='username' onChange={(event)=>this.props.write(event.target.value,'username')}placeholder='username' type='text'/>
-                </div>
+                <input onChange={(event)=>this.props.write(event.target.value,'username')}placeholder='username' type='text' className='username'/>
 
-                <div>
                 <label>Email</label>
-                <input name='email' onChange={(event)=>this.props.write(event.target.value, 'email')}placeholder='email' type='text'/>
-                </div>
+                <input name='email' onChange={(event)=>this.props.write(event.target.value, 'email')}placeholder='email' type='text' className='email'/>
 
-                <div>
                 <label>First Name</label>
-                <input name='firstname' onChange={(event)=>this.props.firstName(event.target.value, 'firstName')}placeholder='first name'type ='text'/>
-                </div>
+                <input name='firstname' onChange={(event)=>this.props.firstName(event.target.value, 'firstName')}placeholder='first name'type ='text'className='firstname'/>
 
-                <div>
                 <label>Last Name</label>
-                <input name='lastname' onChange={(event)=>this.props.lastName(event.target.value, 'lastName')}placeholder='last name' type='text'/>
-                </div>
+                <input name='lastname' onChange={(event)=>this.props.lastName(event.target.value, 'lastName')}placeholder='last name' type='text' className='lastname'/>
 
-                <div>
                 <label>Password</label>
-                <input name='password' onChange={(event)=>this.props.password(event.target.value, 'password')}placeholder='password' type='text'/>
-                </div>
+                <input name='password' onChange={(event)=>this.props.password(event.target.value, 'password')}placeholder='password' type='text' className='password'/>
 
-                <div>
-                <button onClick={()=>this.props.submitForm(this.props.username, this.props.email, this.props.firstname, this.props.lastname, this.props.password)}>Submit</button>
-                </div>
+                <label> Confirm Password</label>
+                <input name='confpassword' onChange={(event)=>this.props.confPassword(event.target.value, 'confPassword')}placeholder='confirm password' type='text' className='confpassword'/>
+
+                <button onClick={()=>this.props.signup(object)}>Submit</button>
+
             </div>
         )
     }
-
 }
 
-const signupContainer = ReactRedux.connect(
-  state => state.signup,
+const SignupContainer = ReactRedux.connect(
+  state => state.Signup,
   actions
-)(signup);
+)(Signup);
 
-export default signupContainer;
+export default SignupContainer;

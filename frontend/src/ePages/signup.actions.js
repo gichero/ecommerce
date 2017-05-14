@@ -1,3 +1,4 @@
+import {Router, Route, hashHistory, Link, IndexRoute, IndexLink} from 'react-router';
 import $ from 'jquery';
 
 function pageInfo(info){
@@ -5,8 +6,6 @@ function pageInfo(info){
         type: 'signup'
     }
 }
-
-
 export function signup(data){
     console.log(data.pass +' '+data.confPass)
     if(data.pass === data.confPass){
@@ -20,13 +19,18 @@ export function signup(data){
                     email: data.email,
                     firstName: data.firstname,
                     lastName: data.lastname,
-                    password: data.password
+                    password: data.password,
+                    confPassword: data.confpassword
                 }),
                 dataType: 'json'
             })
             .then(info=>dispatch(pageInfo(info)))
         }
         return asyncAction;
+    }else{
+        return{
+            type: 'error'
+        }
     }
 }
 

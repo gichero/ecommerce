@@ -13,6 +13,7 @@ class HomePage extends React.Component {
 
     return (
         <div className="page">
+
       {this.props.allImages.map((page,idx)=>
             <div className='products' key={idx}>
               <img className='cover'  src={'/media/'+page.image_path}/>

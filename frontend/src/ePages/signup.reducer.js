@@ -3,7 +3,8 @@ const INITIAL_STATE = {
     email: null,
     firstName: null,
     lastName: null,
-    password: null
+    password: null,
+    confPassword: null
 };
 
 export default function reducer(state = INITIAL_STATE, action){
@@ -32,7 +33,10 @@ export default function reducer(state = INITIAL_STATE, action){
             password: action.text
         });
     }
-    else{
-        return state;
+    else if(action.type === 'confPassword'){
+        return Object.assign({}, state, {
+            confpassword: action.text
+        });
     }
+        return state;
 }
