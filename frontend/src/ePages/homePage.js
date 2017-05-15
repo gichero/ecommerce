@@ -17,13 +17,17 @@ class HomePage extends React.Component {
           <div className='loginform'>
           <input onChange={event=>this.props.write(event.target.value,'userlogin')}className='userlogin' type='text'/>
           <input onChange={event=>this.props.write(event.target.value,'passlogin')}className='passlogin' type='text'/>
-          <button onClick={()=>this.props.login({user:this.props.userlogin, password: this.props.passlogin})}>Log In</button>
+          <button onClick={()=>this.props.login({username:this.props.userlogin, password: this.props.passlogin})}>LogIn</button>
           <button><Link to='/signup'>Sign Up</Link></button>
           </div>
       )
 
   }else{
-      display = (<h3>Welcome {this.props.userinfo.firstname}</h3>);
+
+      display = (
+          <div>
+          <h3>Welcome {this.props.userinfo.first_name}</h3><button onClick={()=>this.props.logout()}>logOut</button>
+          </div>)
    }
 
     return (

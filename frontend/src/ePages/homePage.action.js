@@ -9,10 +9,16 @@ export function pageInfo(info){
     }
 }
 
-function loginInfo(info){
+export function loginInfo(info){
     return{
         type: 'login',
         payload: info
+    }
+}
+
+export function logout(info){
+    return{
+        type: 'logout'
     }
 }
 
@@ -27,6 +33,7 @@ export function fetchImage(){
 }
 
 export function login(info){
+    console.log(info.username);
     let asyncAction = function(dispatch){
         $.ajax({
             type: 'POST',
@@ -42,6 +49,7 @@ export function login(info){
     }
         return asyncAction;
 }
+
 export function write(event, type){
     return{
         type: type,

@@ -22,17 +22,18 @@ export default function reducer(state = INITIAL_STATE, action) {
         return Object.assign({}, state, {
             passlogin: action.text
         });
-     }//else if (action.type === "loginerror"){
-    //     return Object.assign({}, state, {
-    //         loginmessage:action.message
-    //     });
-    // }else if (action.type === "logout"){
-    //     return Object.assign({}, state, {
-    //         logininfo:{
-    //             username: null,
-    //             authtoken: null
-    //     });
-    // }
-    // }
+     }else if (action.type === "loginerror"){
+         return Object.assign({}, state, {
+             loginmessage:action.message
+         });
+     }else if (action.type === "logout"){
+         console.log('logout');
+         return Object.assign({}, state, {
+             logininfo:{
+                 username: null,
+                 authtoken: null
+         }
+     });
+     }
   return state;
 }
