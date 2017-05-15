@@ -7,8 +7,9 @@ function pageInfo(info){
     }
 }
 export function signup(data){
-    console.log(data.pass +' '+data.confPass)
-    if(data.pass === data.confPass){
+    console.log()
+    console.log(data.password +' '+data.confpassword)
+    if(data.password === data.confpassword){
         let asyncAction = function(dispatch){
             $.ajax({
                 type: 'POST',
@@ -17,10 +18,10 @@ export function signup(data){
                 data: JSON.stringify({
                     username: data.username,
                     email: data.email,
-                    firstName: data.firstname,
-                    lastName: data.lastname,
+                    first_name: data.firstname,
+                    last_name: data.lastname,
                     password: data.password,
-                    confPassword: data.confpassword
+                    confpassword: data.confpassword
                 }),
                 dataType: 'json'
             })

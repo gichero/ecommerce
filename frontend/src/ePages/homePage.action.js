@@ -9,6 +9,13 @@ export function pageInfo(info){
     }
 }
 
+function loginInfo(info){
+    return{
+        type: 'login',
+        payload: info
+    }
+}
+
 export function fetchImage(){
     let asyncAction = function(dispatch){
         $.ajax({
@@ -17,4 +24,27 @@ export function fetchImage(){
         .then(info => dispatch(pageInfo(info)))
     }
     return asyncAction;
+}
+
+export function login(info){
+    let asyncAction = function(dispatch){
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json',
+            url: 'http://localhost:4000/api/user/login',
+            data: JSON.stringify({
+                username: info.username,
+                password: info.password,
+            }),
+            dataType: 'json'
+        })
+        .then(info=>dispatch(loginInfo(info)))
+    }
+        return asyncAction;
+}
+export function write(event, type){
+    return{
+        type: type,
+        text: event
+    }
 }

@@ -1,16 +1,17 @@
 const INITIAL_STATE = {
-    userName: null,
+    username: null,
     email: null,
-    firstName: null,
-    lastName: null,
+    firstname: null,
+    lastname: null,
     password: null,
-    confPassword: null
+    confpassword: null,
+    error: null
 };
 
 export default function reducer(state = INITIAL_STATE, action){
-    if(action.type === 'userName'){
+    if(action.type === 'username'){
         return Object.assign({}, state, {
-            userName: action.text
+            username: action.text
         });
     }
     else if(action.type === 'email'){
@@ -18,14 +19,14 @@ export default function reducer(state = INITIAL_STATE, action){
             email:action.text
         });
     }
-    else if(action.type === 'firstName'){
+    else if(action.type === 'firstname'){
         return Object.assign({}, state, {
-            firstName: action.text
+            firstname: action.text
         });
     }
-    else if(action.type === 'lastName'){
+    else if(action.type === 'lastname'){
         return Object.assign({}, state, {
-            lastName: action.text
+            lastname: action.text
         });
     }
     else if(action.type === 'password'){
@@ -33,9 +34,17 @@ export default function reducer(state = INITIAL_STATE, action){
             password: action.text
         });
     }
-    else if(action.type === 'confPassword'){
+    else if(action.type === 'confpassword'){
         return Object.assign({}, state, {
             confpassword: action.text
+        });
+    }
+    else if(action.type === 'submit'){
+        return state;
+    }
+    else if (action.type === 'error'){
+        return Object.assign({}, state, {
+            error: true
         });
     }
         return state;

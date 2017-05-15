@@ -22,8 +22,8 @@ class ProductDetail extends React.Component{
                     <h1>{this.props.items.name}</h1>
                     <p>{this.props.items.description}</p>
                     <h2>${this.props.items.price}.00</h2>
-                    <button><Link to="/">Back!</Link></button>
-                    <button><Link to="/">Buy Now!</Link></button>
+                    <button><Link to= "/">Back!</Link></button>
+                    <button><Link to= "/">Buy</Link></button>
                 </div>
             </div>
         )

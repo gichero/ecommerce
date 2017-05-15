@@ -17,7 +17,6 @@ const reducer = Redux.combineReducers({
     HomePage: HomePageReducer,
     ProductDetail: ProductDetailReducer,
     Signup: SignupReducer
-
 });
 
 const store = Redux.createStore(
@@ -29,13 +28,13 @@ const store = Redux.createStore(
 class AppLayout extends React.Component {
   render() {
 
-      let topRight;
-    console.log(this.props.userInfo);
-    if (this.props.userInfo != null){
-      topRight = (
-      <div className='topRight'>
-      <h3>{'Welcome' + this.props.userInfo.username}</h3>
-      </div>
+    let topRight;
+    console.log(this.props.userinfo);
+    if (this.props.userinfo != null){
+        topRight = (
+            <div className='topRight'>
+                <h3>{'Welcome' + this.props.userInfo.username}</h3>
+            </div>
     );
   }
     //   let topRight = (
@@ -47,7 +46,8 @@ class AppLayout extends React.Component {
     //   )
 
     // a link for each component
-    return (
+
+                return (
     <div>
       <div>
         <div className="navbar">
@@ -70,7 +70,7 @@ ReactDOM.render(
       <Route path="/" component={AppLayout}>
         <IndexRoute component={HomePageContainer}/>
         <Route path="/productDetail/:id" component={ProductDetailContainer}/>
-        <Route path="/signup/" component={SignupContainer}/>
+        <Route path="/signup" component={SignupContainer}/>
       </Route>
     </Router>
   </ReactRedux.Provider>,

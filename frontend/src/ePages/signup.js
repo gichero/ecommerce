@@ -6,35 +6,39 @@ import { Router, Route, Link, IndexLink, IndexRoute, hashHistory } from 'react-r
 class Signup extends React.Component{
     render(){
         let object = {
-            userName: this.props.userName,
+            username: this.props.username,
             email: this.props.email,
-            firstName: this.props.firstName,
-            lastName: this.props.lastName,
+            firstname: this.props.firstname,
+            lastname: this.props.lastname,
             password: this.props.password,
-            confPassword: this.props.confPassword
+            confpassword: this.props.confpassword
+        }
+        let mismatch;
+        if(this.props.error){
+            mismatch= 'password did not match';
         }
         return(
-            <div>
+            <div className='signup'>
 
                 <h2>Sign Up</h2>
-
-                <label>Username</label>
+                {mismatch}
+                <h3>Username</h3>
                 <input onChange={(event)=>this.props.write(event.target.value,'username')}placeholder='username' type='text' className='username'/>
 
-                <label>Email</label>
+                <h3>Email</h3>
                 <input name='email' onChange={(event)=>this.props.write(event.target.value, 'email')}placeholder='email' type='text' className='email'/>
 
-                <label>First Name</label>
-                <input name='firstname' onChange={(event)=>this.props.firstName(event.target.value, 'firstName')}placeholder='first name'type ='text'className='firstname'/>
+                <h3>First Name</h3>
+                <input name='firstname' onChange={(event)=>this.props.write(event.target.value, 'firstname')}placeholder='first name'type ='text'className='firstname'/>
 
-                <label>Last Name</label>
-                <input name='lastname' onChange={(event)=>this.props.lastName(event.target.value, 'lastName')}placeholder='last name' type='text' className='lastname'/>
+                <h3>Last Name</h3>
+                <input name='lastname' onChange={(event)=>this.props.write(event.target.value, 'lastname')}placeholder='last name' type='text' className='lastname'/>
 
-                <label>Password</label>
-                <input name='password' onChange={(event)=>this.props.password(event.target.value, 'password')}placeholder='password' type='text' className='password'/>
+                <h3>Password</h3>
+                <input name='password' onChange={(event)=>this.props.write(event.target.value, 'password')}placeholder='password' type='text' className='password'/>
 
-                <label> Confirm Password</label>
-                <input name='confpassword' onChange={(event)=>this.props.confPassword(event.target.value, 'confPassword')}placeholder='confirm password' type='text' className='confpassword'/>
+                <h3> Confirm Password</h3>
+                <input name='confpassword' onChange={(event)=>this.props.write(event.target.value, 'confpassword')}placeholder='confirm password' type='text' className='confpassword'/>
 
                 <button onClick={()=>this.props.signup(object)}>Submit</button>
 

@@ -8,8 +8,9 @@ body {
   position:fixed;
   top: 0;
   width: 100%;
-  background-color: lightBlue;
+  /*background-color: lightBlue;*/
   height: 5vw;
+  z-index: 0;
 }
 .products{
   float: left;
@@ -47,4 +48,14 @@ body {
 }
 .products h4{
   float: left;
+}
+
+.loginform{
+    z-index: 1;
+    float:right;
+}
+
+.signup{
+    margin-top: 100px;
+    margin-left: 20px;
 }
