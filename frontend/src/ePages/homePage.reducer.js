@@ -29,10 +29,7 @@ export default function reducer(state = INITIAL_STATE, action) {
      }else if (action.type === "logout"){
          console.log('logout');
          return Object.assign({}, state, {
-             logininfo:{
-                 username: null,
-                 authtoken: null
-         }
+            userinfo: null
      });
      }
   return state;

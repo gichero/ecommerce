@@ -16,7 +16,7 @@ export function loginInfo(info){
     }
 }
 
-export function logout(info){
+export function logout(){
     return{
         type: 'logout'
     }
