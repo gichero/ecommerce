@@ -18,7 +18,7 @@ class HomePage extends React.Component {
           <input onChange={event=>this.props.write(event.target.value,'userlogin')}className='userlogin' type='text'/>
           <input onChange={event=>this.props.write(event.target.value,'passlogin')}className='passlogin' type='text'/>
           <button onClick={()=>this.props.login({username:this.props.userlogin, password: this.props.passlogin})}>LogIn</button>
-          <button><Link to='/signup'>Sign Up</Link></button>
+          <button><Link to="/signup">Sign Up</Link></button>
           </div>
       )
 
